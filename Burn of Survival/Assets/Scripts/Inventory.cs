@@ -20,6 +20,7 @@ public class Inventory : MonoBehaviour
         slots = slotHolder.transform.childCount;
         slot = new Transform[slots];
         DetectInventorySlots();
+        inventory.enabled = false;
 
     }
     public void Update()

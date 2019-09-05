@@ -52,7 +52,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             if(thisItem.type == "water")
             {
                 Player playerScript = player.GetComponent<Player>(); //this references the player script
-                if (playerScript.thirst > 0)
+                if (playerScript.checkAlive())
                     playerScript.Drink(thisItem.decreaseValue);
             }
         }
