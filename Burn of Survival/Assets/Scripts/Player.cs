@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public float maxHealth, maxThirst, maxHunger;
     public float thirstIncreaseRate, hungerIncreaseRate;
    
-    private float health, thirst, hunger;
+    public float health, thirst, hunger;
     private bool dead;
     public void Start()
     {
@@ -46,5 +46,10 @@ public class Player : MonoBehaviour
             dead = true;
         }
         
+    }
+
+    public void Drink(float decreaseRate)
+    {
+        thirst -= decreaseRate;
     }
 }

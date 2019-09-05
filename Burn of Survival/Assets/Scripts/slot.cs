@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public bool empty;
 
     public GameObject item;
     public Texture itemIcon;
 
+    private GameObject player;
+
     public bool hovered;
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         hovered = false;
     }
 
@@ -41,4 +44,17 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         hovered = false;
     }
 
+    public void OnPointerClick(PointerEventData eventData) {
+        if (item)
+        {
+            Item thisItem = item.GetComponent<Item>();
+            //check item type
+            if(thisItem.type == "water")
+            {
+                Player playerScript = player.GetComponent<Player>(); //this references the player script
+                if (playerScript.thirst > 0)
+                    playerScript.Drink(thisItem.decreaseValue);
+            }
+        }
+    }
 }
