@@ -8,7 +8,7 @@ public class Item : MonoBehaviour
     public Texture icon;
     public string type;
 
-    public float decreaseValue;
+    public float thirstRechargeAmount;
     public bool interactable;
     public bool canPickUp;
 

@@ -30,20 +30,15 @@ public class Player : MonoBehaviour
         calculateHealthBar();
         calculateHungerBar();
         calculateThirstBar();
-
+        calculateStats();
         interact();
 
         lookInteract();
 
-        ///temp///////////////////////////////
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            TakeDamage(5f);
-        }
-
-        //////////////////////////////
-
+        
+    }
+    public void calculateStats()
+    {
         if (thirst > 0)
         {
             thirst -= thirstIncreaseRate * Time.deltaTime;
@@ -63,7 +58,6 @@ public class Player : MonoBehaviour
             Starving();
         }
     }
-
     public float calculateHealthBar()
     {
         float normalizedHealth = health / maxHealth;
@@ -149,8 +143,9 @@ public class Player : MonoBehaviour
     {
         if (_selection != null)
         {
-            var selectionRenderer = _selection.GetComponent<Renderer>();
-            selectionRenderer.material = defaultMaterial;
+            Material selectionMaterial = _selection.GetComponent<Item>().itemMaterial;
+            Renderer meshRenderer = _selection.GetComponent<Renderer>();
+            meshRenderer.material = selectionMaterial;
             _selection = null;
         }
 
