@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-
+  
     public Texture icon;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string type;
 
-    // Update is called once per frame
-    void Update()
+    public float decreaseValue;
+    public bool interactable;
+    public bool canPickUp;
+
+    public Material itemMaterial;
+
+    public void Start()
     {
-        
+        itemMaterial = GetComponent<Renderer>().material;
     }
 }

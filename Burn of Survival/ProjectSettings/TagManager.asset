@@ -5,7 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - fps
   - Item
+  - Pond
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - fps
   - 
   - 
   - 
@@ -42,7 +44,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Item
-    uniqueID: 30662771
     locked: 0
