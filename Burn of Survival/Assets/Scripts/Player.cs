@@ -4,19 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
-    public float maxHealth, minThirst, minHunger;
+    public float maxHealth, minThirst, minHunger, maxStamina;
     public float thirstIncreaseRate, hungerIncreaseRate;
+
+    private float rechargeTime = 1.0f;
+    private float timerReturn = 2.0f;
+    private float timer;
    
-    public float health, thirst, hunger;
+    public float health, thirst, hunger, stamina;
     private bool dead;
 
     public Slider healthBar, thirstBar, hungerBar, staminaBar;
     
     public void Start()
     {
+        timer = timerReturn;
         health = maxHealth;
         calculateHealthBar();
-        
     }
 
     public void Update()
@@ -25,6 +29,7 @@ public class Player : MonoBehaviour
         calculateHealthBar();
         calculateHungerBar();
         calculateThirstBar();
+        calculateStaminaBar(0);
 
         ///temp///////////////////////////////
       
@@ -35,8 +40,23 @@ public class Player : MonoBehaviour
 
         //////////////////////////////
 
-        
-
+        //checks for shift to see if they're sprinting
+        if(Input.GetKey(KeyCode.LeftShift) && stamina != 0)
+        {
+            calculateStaminaBar(1);
+            timer = timerReturn;
+        }
+        else if(stamina != 100) //checks if stamina is low to start recharge
+        {
+                if(timer * Time.deltaTime >= rechargeTime)
+                {
+                    stamina += 1.0f;
+                }
+                else
+                {
+                    timer += timer * Time.deltaTime;
+                }
+        }
 
         if (thirst > 0)
         {
@@ -55,6 +75,10 @@ public class Player : MonoBehaviour
         if (hunger <= 0)
         {
             Starving();
+        }
+        if(stamina <= 0)
+        {
+            
         }
         
     }
@@ -76,6 +100,17 @@ public class Player : MonoBehaviour
     {
         float normalizedHunger = hunger / minHunger;
         hungerBar.value = normalizedHunger;
+    }
+
+    public void calculateStaminaBar(int input)
+    {
+        if(input == 1)
+        {
+            stamina -= 1.0f;
+        }
+
+        float normalizedStamina = stamina / maxStamina;
+        staminaBar.value = normalizedStamina;
     }
 
     public void Starving()
