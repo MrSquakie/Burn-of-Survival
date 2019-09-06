@@ -4,24 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
-    public float maxHealth, minThirst, minHunger;
+    [Header("PlayerSettings")]
+    public float maxHealth;
+    public float minThirst;
+    public float minHunger;
     public float thirstIncreaseRate, hungerIncreaseRate;
-   
     public float health, thirst, hunger;
     private bool dead;
-
     public Slider healthBar, thirstBar, hungerBar, staminaBar;
 
+
+    [Header("Object Interaction")]
+    public bool canInteract; //is the player within distance to click object.
     public Camera playerCamera;
-
     public Text interactingObjectName;  //text from object interaction canvas
-
     public Material highlightMaterial;
 
     public void Start()
     {
         health = maxHealth;
         calculateHealthBar();
+        canInteract = false;
     }
 
     public void Update()
@@ -118,7 +121,11 @@ public class Player : MonoBehaviour
     }
     public void Drink(float increaseRate)
     {
-        thirst += increaseRate;
+
+        if (thirst < 100)
+        {
+            thirst += increaseRate;
+        }
     }
 
 
@@ -138,7 +145,11 @@ public class Player : MonoBehaviour
     }
 
     private Transform _selection;
-    private Material defaultMaterial;
+
+    /// <summary>
+    /// Raycast to an object and if it has the item component and is marked as interactable change the material.
+    /// If we stop looking at the object, reset the material- (_seletion != null) part
+    /// </summary>
     public void lookInteract() //where the player is looking highlight object, different from click raycast. 
     {
         if (_selection != null)
@@ -148,7 +159,7 @@ public class Player : MonoBehaviour
             meshRenderer.material = selectionMaterial;
             _selection = null;
         }
-
+        
         RaycastHit hit;
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
@@ -164,9 +175,41 @@ public class Player : MonoBehaviour
                 {
                     Renderer mat = hitObject.GetComponent<Renderer>();
                     mat.material = highlightMaterial;
+
+                        objectInteract(item);
                 }
                 _selection = hitObject;
             }
+        }
+    }
+
+    public void objectInteract(Item item)
+    {
+        if (Input.GetKeyDown(KeyCode.E) && canInteract) {
+            if (item.type == Item.ItemType.lake)
+            {
+                Drink(item.thirstRechargeAmount);
+            }
+        }
+    }
+
+    /// <summary>
+    /// is the player within a trigger object that has an item component? 
+    /// These triggers are set as the interact distance,so set to true
+    /// </summary>
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Item>() != null)
+        {
+            print("in zone");
+            canInteract = true;
+        }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Item>() != null)
+        {
+            canInteract = false;
         }
     }
 }

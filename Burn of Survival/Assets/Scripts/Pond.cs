@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pond : Item
+public class Pond : MonoBehaviour
 {
-    // Start is called before the first frame update
-    
-
-    // Update is called once per frame
-    void Update()
+    public float refreshValue;
+    public void Start()
     {
-       
+          
+      
     }
+
 }

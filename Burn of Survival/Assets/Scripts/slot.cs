@@ -49,7 +49,7 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             Item thisItem = item.GetComponent<Item>();
             //check item type
-            if(thisItem.type == "water")
+            if(thisItem.type == Item.ItemType.lake)
             {
                 Player playerScript = player.GetComponent<Player>(); //this references the player script
                 if (playerScript.checkAlive())

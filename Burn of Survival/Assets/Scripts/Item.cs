@@ -6,16 +6,18 @@ public class Item : MonoBehaviour
 {
   
     public Texture icon;
-    public string type;
 
     public float thirstRechargeAmount;
     public bool interactable;
     public bool canPickUp;
 
     public Material itemMaterial;
+    public enum ItemType { water, food, lake};
+    public ItemType type;
 
     public void Start()
     {
         itemMaterial = GetComponent<Renderer>().material;
+
     }
 }

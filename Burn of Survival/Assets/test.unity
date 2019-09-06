@@ -1215,6 +1215,7 @@ MonoBehaviour:
   thirstBar: {fileID: 123011313}
   hungerBar: {fileID: 1514688587}
   staminaBar: {fileID: 0}
+  canInteract: 0
   playerCamera: {fileID: 2037803498}
   interactingObjectName: {fileID: 526483787}
   highlightMaterial: {fileID: 2100000, guid: 1ae82e1a02db085479c9bb6532715133, type: 2}
@@ -2539,11 +2540,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 2800000, guid: eb5f6e2757c821940b69cf1456f7865a, type: 3}
-  type: water
   thirstRechargeAmount: 30
   interactable: 1
   canPickUp: 0
   itemMaterial: {fileID: 0}
+  type: 0
 --- !u!65 &1153833954
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4729,6 +4730,7 @@ GameObject:
   - component: {fileID: 1991927163}
   - component: {fileID: 1991927162}
   - component: {fileID: 1991927161}
+  - component: {fileID: 1991927166}
   - component: {fileID: 1991927165}
   m_Layer: 0
   m_Name: Lake
@@ -4804,8 +4806,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991927160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.720036, y: -18.7, z: 13.731102}
-  m_LocalScale: {x: 31.893639, y: 21.61871, z: 21.61871}
+  m_LocalPosition: {x: 11.99, y: -17.71, z: 14.7}
+  m_LocalScale: {x: 31.893639, y: 21.61871, z: 23.810846}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -4819,15 +4821,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991927160}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938c61a654d7ce445bf3a058e03711a5, type: 3}
+  m_Script: {fileID: 11500000, guid: 422ab84f427062e49a9f023e8d400a7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 0}
-  type: 
-  thirstRechargeAmount: 0
+  thirstRechargeAmount: 20
   interactable: 1
   canPickUp: 0
   itemMaterial: {fileID: 0}
+  type: 2
+--- !u!136 &1991927166
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991927160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.50000006
+  m_Height: 1.0000001
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2000811173
 GameObject:
   m_ObjectHideFlags: 0
