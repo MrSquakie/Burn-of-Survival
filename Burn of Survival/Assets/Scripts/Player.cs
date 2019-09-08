@@ -152,6 +152,7 @@ public class Player : MonoBehaviour
     /// </summary>
     public void lookInteract() //where the player is looking highlight object, different from click raycast. 
     {
+        
         if (_selection != null)
         {
             Material selectionMaterial = _selection.GetComponent<Item>().itemMaterial;
@@ -162,6 +163,7 @@ public class Player : MonoBehaviour
         
         RaycastHit hit;
         Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+         //turns of raycast hitting trigger colliders.
         if (Physics.Raycast(ray, out hit))
         {
             Debug.DrawRay(ray.origin, hit.transform.position * 1000, Color.green);
