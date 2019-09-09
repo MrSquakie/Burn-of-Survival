@@ -1405,6 +1405,8 @@ MonoBehaviour:
   thirst: 50
   hunger: 50
   stamina: 50
+  canRun: 0
+  fpsController: {fileID: 0}
   canInteract: 0
   playerCamera: {fileID: 2037803498}
   interactingObjectName: {fileID: 526483787}
@@ -5637,6 +5639,11 @@ PrefabInstance:
     - target: {fileID: 3966151859814001326, guid: b3fb4fdec688abd4bba15f6782a89d34,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966151859814001327, guid: b3fb4fdec688abd4bba15f6782a89d34,
+        type: 3}
+      propertyPath: canPickUp
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -59,7 +59,6 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             {
                 if (thisItem.type == Item.ItemType.water)
                 {
-
                     //drink water
                     playerScript.Drink(thisItem.thirstRechargeAmount);
                     empty = true;
