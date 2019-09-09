@@ -41,8 +41,14 @@ public class Inventory : MonoBehaviour
                 inventory.enabled = true;
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
-
             }
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            inventory.enabled = false;
+            inventoryEnabled = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
     public void toggleInventory()
