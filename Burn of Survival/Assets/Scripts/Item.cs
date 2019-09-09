@@ -7,7 +7,7 @@ public class Item : MonoBehaviour
   
     public Texture icon;
 
-    public float thirstRechargeAmount;
+    public float thirstRechargeAmount, hungerRechargeAmount;
     public bool interactable;
     public bool canPickUp;
 
@@ -18,6 +18,5 @@ public class Item : MonoBehaviour
     public void Start()
     {
         itemMaterial = GetComponent<Renderer>().material;
-
     }
 }

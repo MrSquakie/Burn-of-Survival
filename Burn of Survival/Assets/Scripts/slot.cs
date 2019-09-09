@@ -31,11 +31,12 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         {
             empty = true;
         }
-
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        print("entered");
+
         hovered = true;
     }
     
@@ -45,15 +46,19 @@ public class slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     }
 
     public void OnPointerClick(PointerEventData eventData) {
+        print("drink");
         if (item)
         {
             Item thisItem = item.GetComponent<Item>();
             //check item type
-            if(thisItem.type == Item.ItemType.lake)
+            if(thisItem.type == Item.ItemType.water)
             {
                 Player playerScript = player.GetComponent<Player>(); //this references the player script
                 if (playerScript.checkAlive())
+                {
+                    //drink water
                     playerScript.Drink(thisItem.thirstRechargeAmount);
+;                }
             }
         }
     }

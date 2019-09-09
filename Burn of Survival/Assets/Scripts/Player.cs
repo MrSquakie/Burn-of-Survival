@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
     public float thirstIncreaseRate, hungerIncreaseRate;
     public float health, thirst, hunger;
     private bool dead;
-    public Slider healthBar, thirstBar, hungerBar, staminaBar;
 
 
     [Header("Object Interaction")]
@@ -23,16 +22,12 @@ public class Player : MonoBehaviour
     public void Start()
     {
         health = maxHealth;
-        calculateHealthBar();
         canInteract = false;
     }
 
     public void Update()
     {
         //each frame update UI
-        calculateHealthBar();
-        calculateHungerBar();
-        calculateThirstBar();
         calculateStats();
         interact();
 
@@ -42,15 +37,9 @@ public class Player : MonoBehaviour
     }
     public void calculateStats()
     {
-        if (thirst > 0)
-        {
-            thirst -= thirstIncreaseRate * Time.deltaTime;
-        }
+       
 
-        if (hunger > 0)
-        {
-            hunger -= hungerIncreaseRate * Time.deltaTime;
-        }
+        
 
         if (thirst <= 0)
         {
@@ -61,25 +50,7 @@ public class Player : MonoBehaviour
             Starving();
         }
     }
-    public float calculateHealthBar()
-    {
-        float normalizedHealth = health / maxHealth;
-        healthBar.value = normalizedHealth;
-        return normalizedHealth;
-    }
-
-    public void calculateThirstBar()
-    {
-        float normalizedThirst = thirst / minThirst;
-        thirstBar.value = normalizedThirst;
-    }
-
-    public void calculateHungerBar()
-    {
-        float normalizedHunger = hunger / minHunger;
-        hungerBar.value = normalizedHunger;
-    }
-
+    
     public void Starving()
     {
         if (checkAlive())
@@ -111,14 +82,13 @@ public class Player : MonoBehaviour
     public void TakeDamage(float _damage)
     {
         health -= _damage;
-        calculateHealthBar();  //healthbar update
     }
 
     public void heal(float _healAmount)
     {
         health += _healAmount;
-        calculateHealthBar();  //healthbar update
     }
+
     public void Drink(float increaseRate)
     {
 
@@ -127,7 +97,14 @@ public class Player : MonoBehaviour
             thirst += increaseRate;
         }
     }
+    public void Eat(float increaseRate)
+    {
 
+        if (hunger < 100)
+        {
+            hunger += increaseRate;
+        }
+    }
 
     public void interact()  //click raycast, click an object to interact with it.
     {

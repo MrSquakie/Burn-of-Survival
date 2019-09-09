@@ -25,17 +25,23 @@ public class Inventory : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.I)) //open inventory/close inventory
         {
             if (inventoryEnabled)
             {
                 inventory.enabled = false;
                 inventoryEnabled = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
             }
             else
             {
                 inventoryEnabled = true;
                 inventory.enabled = true;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
             }
         }
     }
