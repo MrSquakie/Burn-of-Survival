@@ -6,7 +6,10 @@ public class TreeHarvest : MonoBehaviour
 {
     public float health;
     public float woodAmount;
-    
+    public void Start()
+    {
+        print("hi");
+    }
     public void Die()
     {
 
