@@ -5,13 +5,12 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     [Header("PlayerSettings")]
-    public float maxHealth;
-    public float minThirst;
-    public float minHunger;
-    public float thirstIncreaseRate, hungerIncreaseRate;
-    public float health, thirst, hunger;
-    private bool dead;
 
+    public float maxThirst, maxHunger, maxHealth, maxStamina;
+    public float thirstIncreaseRate, hungerIncreaseRate, staminaIncreaseRate, staminaDecreaseRate;
+    public float health, thirst, hunger, stamina;
+    private bool dead;
+    public bool canRun;
 
     [Header("Object Interaction")]
     public bool canInteract; //is the player within distance to click object.
@@ -30,17 +29,25 @@ public class Player : MonoBehaviour
         //each frame update UI
         calculateStats();
         interact();
-
         lookInteract();
+        canRunCheck();
 
-        
     }
+
+    public void canRunCheck()
+    {
+        if (stamina > 0)
+        {
+            canRun = true;
+        }
+        else
+        {
+            canRun = false;
+        }
+    }
+
     public void calculateStats()
     {
-       
-
-        
-
         if (thirst <= 0)
         {
             Dehydrated();
@@ -48,6 +55,14 @@ public class Player : MonoBehaviour
         if (hunger <= 0)
         {
             Starving();
+        }
+        if (hunger > maxHunger)
+        {
+            hunger = maxHunger;
+        }
+        if (thirst > maxThirst)
+        {
+            thirst = maxThirst;
         }
     }
     
@@ -99,7 +114,6 @@ public class Player : MonoBehaviour
     }
     public void Eat(float increaseRate)
     {
-
         if (hunger < 100)
         {
             hunger += increaseRate;

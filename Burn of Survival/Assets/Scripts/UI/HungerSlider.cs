@@ -12,7 +12,7 @@ public class HungerSlider : MonoBehaviour
     {
         playerVars = GameObject.FindWithTag("Player").GetComponent<Player>();
         hungerBar = GetComponent<Slider>();
-        minHunger = playerVars.minHunger;
+        minHunger = playerVars.maxHunger;
         hunger = playerVars.hunger;
         hungerIncreaseRate = playerVars.hungerIncreaseRate;
     }

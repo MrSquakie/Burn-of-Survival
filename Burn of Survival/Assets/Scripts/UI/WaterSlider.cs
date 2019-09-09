@@ -13,7 +13,7 @@ public class WaterSlider : MonoBehaviour
         playerVars = GameObject.FindWithTag("Player").GetComponent<Player>();
         thirst = playerVars.thirst;
         thirstIncreaseRate = playerVars.thirstIncreaseRate;
-        minThirst = playerVars.minThirst;
+        minThirst = playerVars.maxThirst;
     }
 
     // Update is called once per frame
