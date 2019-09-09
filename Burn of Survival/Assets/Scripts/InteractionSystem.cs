@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class InteractionSystem : MonoBehaviour
 {
-    private Camera playerCamera;
-    private Player playerVars;
+    public Camera playerCamera;
+    public Player playerVars;
     public Text interactingObjectName;  //text from object interaction canvas
     public Material highlightMaterial;
     public bool canInteract;
@@ -16,6 +16,7 @@ public class InteractionSystem : MonoBehaviour
         interactingObjectName = playerVars.interactingObjectName;
         highlightMaterial = playerVars.highlightMaterial;
         canInteract = playerVars.canInteract;
+        playerCamera = playerVars.playerCamera;
     }
     public void Update()
     {

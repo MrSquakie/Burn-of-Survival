@@ -1440,6 +1440,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.3972714, z: 1}
   m_Center: {x: 0, y: 0.1986357, z: -0}
+--- !u!114 &414293056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414293052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0bfca76cf7fd5e46bf854a12b6cc7b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactingObjectName: {fileID: 0}
+  highlightMaterial: {fileID: 0}
+  canInteract: 0
 --- !u!1 &426759603
 GameObject:
   m_ObjectHideFlags: 0
@@ -5374,7 +5389,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: m_Name
-      value: RigidBodyFPSController
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: m_TagString

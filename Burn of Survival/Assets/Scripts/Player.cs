@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
-
 public class Player : MonoBehaviour
 {
     [Header("PlayerSettings")]
@@ -23,6 +22,8 @@ public class Player : MonoBehaviour
 
     public void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         fpsController = GetComponent<RigidbodyFirstPersonController>();
         health = maxHealth;
         canInteract = false;
@@ -32,9 +33,7 @@ public class Player : MonoBehaviour
     {
         //each frame update UI
         calculateStats();
-      
         canRunCheck();
-
     }
 
     public void canRunCheck()
@@ -47,6 +46,7 @@ public class Player : MonoBehaviour
         {
             canRun = false;
         }
+        
     }
 
     public void calculateStats()
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
             thirst = maxThirst;
         }
     }
-    
+
     public void Starving()
     {
         if (checkAlive())
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         if (!dead) {
             dead = true;
         }
-        
+
     }
 
     public void TakeDamage(float _damage)
