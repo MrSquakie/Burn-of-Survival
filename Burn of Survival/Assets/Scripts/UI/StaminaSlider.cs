@@ -42,7 +42,7 @@ public class StaminaSlider : MonoBehaviour
 
     public void rechargeStamina()
     {
-        if (timer > 5f)
+        if (timer > 5f && stamina < maxStamina)
         {
             stamina += staminaIncreaseRate * Time.deltaTime;
             playerVars.stamina = stamina;
