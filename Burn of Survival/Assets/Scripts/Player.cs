@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public float maxHealth, minThirst, minHunger, maxStamina;
     public float thirstIncreaseRate, hungerIncreaseRate;
 
-    private float rechargeTime = 1.0f;
+    private float rechargeTime = 0.5f;
     private float timerReturn = 2.0f;
     private float timer;
    
