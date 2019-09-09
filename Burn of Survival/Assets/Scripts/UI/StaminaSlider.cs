@@ -34,4 +34,21 @@ public class StaminaSlider : MonoBehaviour
         staminaBar.value = normalizedStamina;
         playerVars.stamina = stamina;
     }
+<<<<<<< Updated upstream
+=======
+
+    public void rechargeStamina()
+    {
+        if (timer > 5f)
+        {
+            stamina += staminaIncreaseRate * Time.deltaTime * 2;
+            playerVars.stamina = stamina;
+            calculateStamina();
+        }
+        else
+        {
+            timer += 1 * Time.deltaTime;
+        }
+    }
+>>>>>>> Stashed changes
 }
