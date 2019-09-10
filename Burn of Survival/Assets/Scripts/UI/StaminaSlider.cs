@@ -17,6 +17,7 @@ public class StaminaSlider : MonoBehaviour
         staminaBar = GetComponent<Slider>();
         stamina = playerVars.stamina;
         maxStamina = playerVars.maxStamina;
+        staminaBar.value = normalizedStamina;
         staminaDecreaseRate = playerVars.staminaDecreaseRate;
         staminaIncreaseRate = playerVars.staminaIncreaseRate;
     }
@@ -31,7 +32,7 @@ public class StaminaSlider : MonoBehaviour
     public void calculateStamina()
     {
         stamina = playerVars.stamina;
-        if (stamina > 0 && playerVars.fpsController.Running)
+        if (stamina > 0)
         {
             stamina -= staminaDecreaseRate*Time.deltaTime;
         }
