@@ -9,6 +9,7 @@ TagManager:
   - Item
   - Pond
   - Terrain
+  - Door
   layers:
   - Default
   - TransparentFX
