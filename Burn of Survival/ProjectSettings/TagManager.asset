@@ -10,6 +10,7 @@ TagManager:
   - Pond
   - Terrain
   - Door
+  - HotBar
   layers:
   - Default
   - TransparentFX
